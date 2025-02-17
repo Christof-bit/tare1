@@ -1,0 +1,26 @@
+import math
+
+class Punto:
+    def _init_(self, x: float, y: float):
+        self.x = x
+        self.y = y
+
+    def coord_cartesianas(self):
+        """Retorna las coordenadas cartesianas (x, y)"""
+        return self.x, self.y
+
+    def coord_polares(self):
+        """Convierte coordenadas cartesianas a polares (r, θ)"""
+        r = math.sqrt(self.x * 2 + self.y * 2)
+        theta = math.atan2(self.y, self.x)  # Ángulo en radianes
+        return r, math.degrees(theta)  # Se devuelve el ángulo en grados
+
+    def _str_(self):
+        """Retorna una representación en cadena del punto"""
+        return f"Punto({self.x}, {self.y})"
+
+# Ejemplo de uso
+p = Punto(3, 4)
+print(p)  # Salida: Punto(3, 4)
+print("Cartesianas:", p.coord_cartesianas())  # Salida: (3, 4)
+print("Polares:", p.coord_polares())  # Salida: (5.0, 53.13)
